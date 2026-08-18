@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluación Autónoma 1 | Portafolio de evidencias del aula virtual</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{--pink:#FF0050;--pink-soft:#FFF0F5;--dark:#171416;--dark2:#231F20;--wine:#54152B;--border:#E9E1E4;--success:#138A5B}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--dark2);font-family:Arial,Helvetica,sans-serif;line-height:1.5}button,input,textarea,select{font:inherit}
+#ea1{width:100%;max-width:1400px;margin:0 auto;padding:0 0 46px;overflow:hidden}.container{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
+.hero{position:relative;overflow:hidden;padding:64px 0 92px;color:#fff;background:radial-gradient(circle at 90% 10%,rgba(255,0,80,.25),transparent 34%),radial-gradient(circle at 8% 100%,rgba(115,22,54,.45),transparent 38%),linear-gradient(125deg,#151314 0%,#241B1F 52%,#4A1026 100%)}
+.hero:before{content:"";position:absolute;width:420px;height:420px;right:-120px;top:-170px;border:2px solid rgba(255,255,255,.08);border-radius:50%}.hero:after{content:"";position:absolute;width:220px;height:220px;right:55px;top:-55px;border:1px solid rgba(255,0,80,.22);border-radius:50%}
+.pattern{position:absolute;left:24px;top:22px;width:105px;height:75px;opacity:.4;background-image:radial-gradient(circle,#FF0050 1.6px,transparent 1.7px);background-size:16px 16px}.hero-content{position:relative;z-index:2;max-width:1000px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;padding:9px 15px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.06);font-size:13px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase}.dot{width:9px;height:9px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 5px rgba(255,0,80,.14)}
+.hero h1{max-width:1050px;margin:0 0 20px;font-size:clamp(38px,5.5vw,62px);line-height:1.06;font-weight:900;letter-spacing:-1.8px}.hero h1 span{color:var(--pink)}.hero p{max-width:920px;margin:0;color:rgba(255,255,255,.84);font-size:18px;line-height:1.65}
+.progress-wrap{position:relative;z-index:4;max-width:1180px;margin:-42px auto 34px;padding:0 24px}.progress-card{padding:24px 26px;border:1px solid rgba(255,255,255,.12);border-radius:17px;color:#fff;background:radial-gradient(circle at 96% 10%,rgba(255,0,80,.22),transparent 38%),linear-gradient(135deg,#211D1F,#331421);box-shadow:0 16px 38px rgba(35,31,32,.2)}.progress-top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:12px}.progress-label{font-size:14px;font-weight:800}.progress-step{color:#FF91B2;font-size:13px;font-weight:800}.track{height:10px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.15)}.fill{width:25%;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--pink),#FF8EB1);transition:width .35s ease}
+.panel{display:none;animation:fade .3s ease}.panel.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{margin-bottom:28px;overflow:hidden;border:1px solid var(--border);border-radius:18px;background:#fff;box-shadow:0 14px 34px rgba(35,31,32,.08)}.card-head{position:relative;overflow:hidden;padding:29px 32px;color:#fff;background:radial-gradient(circle at 95% 0,rgba(255,0,80,.23),transparent 37%),linear-gradient(130deg,#211D1F 0%,#421123 100%)}.badge{display:inline-block;margin-bottom:10px;padding:7px 13px;border-radius:999px;background:var(--pink);font-size:12px;font-weight:900;letter-spacing:1px}.card-head h2{margin:0;font-size:30px;line-height:1.25}.card-body{padding:30px 32px 34px}
+.intro{margin-bottom:24px;padding:22px 24px;border-left:6px solid var(--pink);border-radius:0 14px 14px 0;background:linear-gradient(90deg,#FFF0F5,#FFF9FB)}.intro p{margin:0;color:#433B3E;font-size:16px;line-height:1.65}.privacy{margin-bottom:24px;padding:16px 18px;border:1px solid #F0D8A6;border-left:6px solid #D89100;border-radius:10px;color:#664800;background:#FFF9EA;font-size:14px;line-height:1.55}
+.section-title{display:flex;align-items:center;gap:12px;margin:28px 0 14px;font-size:22px}.num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;color:#fff;background:var(--pink);font-size:14px;box-shadow:0 0 0 6px rgba(255,0,80,.08)}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.info{padding:20px;border:1px solid #EFE4E8;border-radius:14px;background:#fff;box-shadow:0 7px 18px rgba(35,31,32,.05)}.info strong{display:block;margin-bottom:8px;color:var(--pink);font-size:17px}.info p{margin:0;color:#5F575A;font-size:14px;line-height:1.55}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.field{margin-bottom:18px}.field.full{grid-column:1/-1}.field label{display:block;margin-bottom:8px;color:#30282C;font-size:14px;font-weight:800}.req{color:var(--pink)}.field input,.field textarea,.field select{width:100%;border:1px solid #DCCFD4;border-radius:10px;background:#fff;color:#2F292B;outline:none}.field input,.field select{min-height:48px;padding:11px 13px}.field textarea{min-height:108px;padding:13px;resize:vertical;line-height:1.55}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,0,80,.09)}
+.evidence{margin-bottom:24px;overflow:hidden;border:1px solid #E8DEE2;border-radius:16px;background:#fff;box-shadow:0 10px 24px rgba(35,31,32,.055)}.ev-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:20px 22px;color:#fff;background:linear-gradient(130deg,#231F20,#4A1026)}.ev-head small{display:block;margin-bottom:5px;color:#FF9DBA;font-size:11px;font-weight:900;letter-spacing:.8px;text-transform:uppercase}.ev-head h3{margin:0;font-size:21px}.chip{padding:6px 9px;border-radius:999px;background:var(--pink);font-size:11px;font-weight:900}.ev-body{padding:22px}
+.upload{position:relative;min-height:190px;display:flex;align-items:center;justify-content:center;padding:20px;border:2px dashed #D9C8CF;border-radius:13px;background:#FCFAFB;text-align:center;cursor:pointer}.upload:hover,.upload.dragover{border-color:var(--pink);background:#FFF6F9}.upload input{position:absolute;width:1px;height:1px;opacity:0}.empty strong{display:block;margin-bottom:7px;font-size:17px}.empty span{display:block;color:#6B6265;font-size:13px;line-height:1.5}.preview{display:none;width:100%}.preview.show{display:block}.preview img{display:block;width:100%;max-height:430px;object-fit:contain;border:1px solid #E1D8DB;border-radius:10px}.preview-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:10px}.mini{min-height:34px;padding:7px 11px;border:1px solid #DDD1D5;border-radius:8px;background:#fff;cursor:pointer;font-size:12px;font-weight:800}.mini.danger{border-color:#F0BBCB;color:#8B2946;background:#FFF6F8}
+
+.note{margin-top:18px;padding:16px 18px;border:1px solid #F3D5E0;border-radius:10px;background:#FFF5F8;color:#55484D;font-size:14px}.actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:26px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:13px 24px;border:0;border-radius:10px;cursor:pointer;text-decoration:none;font-size:15px;font-weight:900}.btn:hover{transform:translateY(-2px)}.primary{color:#fff;background:linear-gradient(135deg,#FF0050,#E00046);box-shadow:0 11px 24px rgba(255,0,80,.22)}.secondary{color:#231F20;border:1px solid #D9CDD1;background:#fff}.download{min-width:270px;color:#fff;background:linear-gradient(135deg,#138A5B,#0B6843);box-shadow:0 11px 24px rgba(19,138,91,.2)}
+.complete{padding:34px;border-radius:17px;text-align:center;color:#fff;background:radial-gradient(circle at 15% 90%,rgba(255,0,80,.16),transparent 35%),radial-gradient(circle at 90% 10%,rgba(255,0,80,.24),transparent 35%),linear-gradient(135deg,#171416,#4A1026)}.complete-icon{display:flex;align-items:center;justify-content:center;width:74px;height:74px;margin:0 auto 20px;border-radius:50%;background:var(--pink);font-size:32px;font-weight:900;box-shadow:0 0 0 9px rgba(255,0,80,.14)}.complete h2{margin:0 0 12px;font-size:31px}.complete p{max-width:800px;margin:0 auto 24px;color:rgba(255,255,255,.82);font-size:16px}.alert{display:none;max-width:850px;margin:22px auto 0;padding:17px 18px;border:1px solid rgba(255,255,255,.2);border-radius:11px;background:rgba(255,255,255,.1);font-size:15px}.alert.show,.next-module.show{display:flex}.next-module{display:none;justify-content:center;margin-top:18px}.error{display:none;margin:0 0 18px;padding:14px 16px;border-left:5px solid var(--pink);border-radius:0 9px 9px 0;color:#6A1734;background:#FFF0F5;font-size:14px;font-weight:700}.error.show{display:block}
+@media(max-width:850px){.grid3,.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}@media(max-width:600px){.container,.progress-wrap{padding-left:16px;padding-right:16px}.hero{padding:46px 0 74px}.hero h1{font-size:36px}.hero p{font-size:17px}.card-head,.card-body{padding:24px 20px}.card-head h2{font-size:25px}.ev-head{flex-direction:column}.actions{flex-direction:column-reverse}.btn{width:100%}.complete{padding:30px 20px}}
+</style>
+</head>
+<body>
+<div id="ea1">
+<header class="hero"><div class="pattern"></div><div class="container"><div class="hero-content">
+<div class="eyebrow"><span class="dot"></span>EVALUACIÓN AUTÓNOMA 1 · MÓDULO 1</div>
+<h1>Presenta la evidencia de tu <span>aula virtual optimizada</span></h1>
+<p>Documenta con capturas de un curso real cómo implementaste criterios de organización, recursos, actividades y acompañamiento en Canvas LMS. Al finalizar, generarás un portafolio en PDF con tus evidencias y reflexiones.</p>
+</div></div></header>
+
+<div class="progress-wrap"><div class="progress-card"><div class="progress-top"><span class="progress-label">Progreso de la evaluación</span><span class="progress-step" id="progressLabel">Paso 1 de 4</span></div><div class="track"><div class="fill" id="progressFill"></div></div></div></div>
+
+<main class="container">
+<section class="panel active" data-step="1"><div class="card"><div class="card-head"><span class="badge">PASO 01</span><h2>Indicaciones y datos del curso</h2></div><div class="card-body">
+<div class="intro"><p><strong>Propósito:</strong> Presentar evidencias de un curso real en Canvas LMS que demuestren una organización clara del aula virtual y la implementación de una actividad optimizada, articulando estructura, recursos, navegación y acompañamiento al estudiante.</p></div>
+<div class="privacy"><strong>Protege la información de tus estudiantes.</strong> Antes de cargar una captura, oculta o recorta nombres, fotografías, correos, calificaciones u otros datos personales.</div>
+<h3 class="section-title"><span class="num">01</span>¿Qué vas a presentar?</h3>
+<div class="grid3"><div class="info"><strong>Organización general</strong><p>Página de inicio y navegación que ayuden al estudiante a reconocer cómo comenzar y avanzar.</p></div><div class="info"><strong>Módulos y recursos</strong><p>Una unidad, semana o módulo con una secuencia clara de contenidos, recursos y actividades.</p></div><div class="info"><strong>Actividad optimizada</strong><p>Una actividad implementada con consigna clara, evidencia esperada y orientación al estudiante.</p></div></div>
+<h3 class="section-title"><span class="num">02</span>Datos del participante y del curso</h3>
+<div class="error" id="identityError">Completa todos los datos solicitados antes de continuar.</div>
+<div class="form-grid">
+<div class="field"><label>Nombres <span class="req">*</span></label><input id="nombres" type="text" placeholder="Escribe tus nombres"></div>
+<div class="field"><label>Apellidos <span class="req">*</span></label><input id="apellidos" type="text" placeholder="Escribe tus apellidos"></div>
+<div class="field full"><label>Correo electrónico <span class="req">*</span></label><input id="correo" type="email" placeholder="nombre@correo.com"></div>
+<div class="field"><label>Nombre del curso <span class="req">*</span></label><input id="curso" type="text" placeholder="Ej. Gestión de proyectos"></div>
+<div class="field"><label>Asignatura o área <span class="req">*</span></label><input id="area" type="text" placeholder="Ej. Negocios, Diseño, Tecnología..."></div>
+<div class="field full"><label>Breve contexto del curso <span class="req">*</span></label><textarea id="contexto" placeholder="Describe en pocas líneas a quién está dirigido el curso y qué experiencia desarrolla."></textarea></div>
+</div>
+<div class="actions"><span></span><button class="btn primary" type="button" onclick="nextStep()">Siguiente →</button></div>
+</div></div></section>
+
+<section class="panel" data-step="2"><div class="card"><div class="card-head"><span class="badge">PASO 02</span><h2>Carga y explica tus evidencias</h2></div><div class="card-body">
+<div class="error" id="evidenceError">Carga las cuatro capturas y completa las explicaciones requeridas antes de continuar.</div>
+
+<div id="evidenceContainer"></div>
+
+<div class="actions"><button class="btn secondary" type="button" onclick="prevStep()">← Regresar</button><button class="btn primary" type="button" onclick="nextStep()">Continuar →</button></div>
+</div></div></section>
+
+<section class="panel" data-step="3"><div class="card"><div class="card-head"><span class="badge">PASO 03</span><h2>Reflexiona y revisa tu evidencia</h2></div><div class="card-body">
+<div class="error" id="reflectionError">Completa las tres preguntas de reflexión antes de finalizar.</div>
+<div class="intro"><p>Explica de manera breve las decisiones pedagógicas que sustentan la organización de tu aula virtual y la actividad presentada.</p></div>
+<div class="field"><label>1. ¿Qué cambio realizado consideras que mejoró más la organización de tu aula? <span class="req">*</span></label><textarea id="ref1"></textarea></div>
+<div class="field"><label>2. ¿Qué decisión tomaste para que la actividad sea más clara para el estudiante? <span class="req">*</span></label><textarea id="ref2"></textarea></div>
+<div class="field"><label>3. ¿Qué aspecto continuarías mejorando en tu aula virtual? <span class="req">*</span></label><textarea id="ref3"></textarea></div>
+<div class="note">Al finalizar, el recurso generará un PDF con tus datos, capturas, explicaciones, criterios aplicados y reflexión final.</div>
+<div class="actions"><button class="btn secondary" type="button" onclick="prevStep()">← Regresar</button><button class="btn primary" type="button" onclick="nextStep()">Finalizar evaluación →</button></div>
+</div></div></section>
+
+<section class="panel" data-step="4"><div class="complete"><div class="complete-icon">✓</div><h2>Portafolio listo para generar</h2><p>Descarga el PDF con las evidencias de tu aula virtual organizada y tu actividad optimizada. Revisa el archivo antes de entregarlo.</p>
+<button class="btn download" type="button" onclick="downloadPDF()">Descargar portafolio de evidencias en PDF</button>
+<div class="alert" id="uploadAlert"><strong>Importante:</strong>&nbsp;Este es el archivo que debes subir en esta misma sección de tarea para registrar tu entrega. Verifica que el PDF se haya descargado correctamente antes de continuar.</div>
+<div class="next-module" id="nextModuleWrap"><a class="btn primary" href="https://aulad.educad.pe/courses/640/pages/introduccion-al-modulo-2?module_item_id=5995" target="_top" onclick="window.top.location.href=this.href;return false;">Iniciar Módulo 2 →</a></div>
+<div class="actions"><button class="btn secondary" type="button" onclick="prevStep()">← Revisar respuestas</button><span></span></div>
+</div></section>
+</main>
+</div>
+
+<script>
+(function(){
+"use strict";
+var currentStep=1,totalSteps=4,images={1:null,2:null,3:null,4:null};
+
+var evData=[
+{n:1,title:"Organización general del aula virtual",chip:"Inicio y navegación",hint:"Muestra la página de inicio o la navegación principal del curso.",fields:[["obs1","¿Qué se observa en esta evidencia?","Describe brevemente qué elementos de la página de inicio o navegación se observan."],["crit1","¿Qué criterio de organización aplicaste?","Explica qué decisión tomaste para orientar mejor al estudiante."]]},
+{n:2,title:"Organización de módulos y recursos",chip:"Secuencia de aprendizaje",hint:"Muestra una semana, unidad o módulo con su secuencia de recursos y actividades.",fields:[["obs2","¿Qué se observa en esta evidencia?","Describe la secuencia, recursos y actividades que aparecen."],["crit2","¿Qué criterio de organización aplicaste?","Explica cómo ayuda a reconocer qué revisar y qué hacer."]]},
+{n:3,title:"Actividad optimizada en Canvas",chip:"Consigna y evidencia",hint:"Muestra el título, consigna, evidencia solicitada y condiciones principales de una actividad implementada.",special:true},
+{n:4,title:"Orientación y comunicación con el estudiante",chip:"Acompañamiento",hint:"Puede ser un anuncio, mensaje, orientación de módulo o recurso que ayude al estudiante a avanzar.",fields:[["obs4","¿Qué elemento de orientación o comunicación se observa?","Describe brevemente el elemento mostrado."],["crit4","¿Cómo ayuda este elemento a orientar o acompañar al estudiante?","Explica cómo favorece la comprensión, seguimiento o avance."]]}
+];
+
+function evidenceHTML(d){
+var fields="";
+if(d.fields){fields=d.fields.map(function(f){return '<div class="field"><label for="'+f[0]+'">'+f[1]+' <span class="req">*</span></label><textarea id="'+f[0]+'" placeholder="'+f[2]+'"></textarea></div>';}).join("");}
+if(d.special){fields='<div class="form-grid"><div class="field"><label>Herramienta utilizada <span class="req">*</span></label><select id="tool"><option value="">Selecciona una opción</option><option>Tarea</option><option>Foro</option><option>Cuestionario / evaluación</option><option>Página</option><option>Otra</option></select></div><div class="field"><label>Evidencia esperada <span class="req">*</span></label><input id="evidenceType" type="text" placeholder="Ej. informe, presentación, participación..."></div></div><div class="field"><label>¿Por qué esta herramienta y esta consigna son adecuadas? <span class="req">*</span></label><textarea id="crit3" placeholder="Justifica la coherencia entre herramienta, consigna y evidencia."></textarea></div>';}
+var checks="";
+return '<article class="evidence"><div class="ev-head"><div><small>Evidencia 0'+d.n+'</small><h3>'+d.title+'</h3></div><span class="chip">'+d.chip+'</span></div><div class="ev-body"><div class="upload" id="zone'+d.n+'" onclick="triggerFile('+d.n+')"><input id="file'+d.n+'" type="file" accept="image/png,image/jpeg,image/webp"><div class="empty" id="empty'+d.n+'"><strong>Arrastra tu captura aquí o selecciónala</strong><span>'+d.hint+'</span></div><div class="preview" id="previewWrap'+d.n+'"><img id="preview'+d.n+'" alt="Vista previa de la evidencia '+d.n+'"><div class="preview-actions"><button class="mini" type="button" onclick="event.stopPropagation();triggerFile('+d.n+')">Cambiar imagen</button><button class="mini danger" type="button" onclick="event.stopPropagation();removeImage('+d.n+')">Eliminar</button></div></div></div><div style="margin-top:18px">'+fields+checks+'</div></div></article>';
+}
+document.getElementById("evidenceContainer").innerHTML=evData.map(evidenceHTML).join("");
+
+function value(id){var el=document.getElementById(id);return el?el.value.trim():"";}
+function setError(id,show){document.getElementById(id).classList.toggle("show",show);}
+function emailOk(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);}
+
+function validate(step){
+if(step===1){var ok=value("nombres")&&value("apellidos")&&value("correo")&&emailOk(value("correo"))&&value("curso")&&value("area")&&value("contexto");setError("identityError",!ok);return !!ok;}
+if(step===2){var ok2=images[1]&&value("obs1")&&value("crit1")&&images[2]&&value("obs2")&&value("crit2")&&images[3]&&value("tool")&&value("evidenceType")&&value("crit3")&&images[4]&&value("obs4")&&value("crit4");setError("evidenceError",!ok2);return !!ok2;}
+if(step===3){var ok3=value("ref1")&&value("ref2")&&value("ref3");setError("reflectionError",!ok3);return !!ok3;}return true;
+}
+function showStep(step){currentStep=Math.max(1,Math.min(totalSteps,step));document.querySelectorAll(".panel").forEach(function(p){p.classList.toggle("active",Number(p.getAttribute("data-step"))===currentStep);});document.getElementById("progressLabel").textContent="Paso "+currentStep+" de "+totalSteps;document.getElementById("progressFill").style.width=((currentStep/totalSteps)*100)+"%";setTimeout(function(){document.querySelector(".progress-card").scrollIntoView({behavior:"smooth",block:"start"});},60);}
+window.nextStep=function(){if(!validate(currentStep))return;showStep(currentStep+1)};window.prevStep=function(){showStep(currentStep-1)};
+window.triggerFile=function(n){document.getElementById("file"+n).click()};window.removeImage=function(n){images[n]=null;document.getElementById("file"+n).value="";document.getElementById("previewWrap"+n).classList.remove("show");document.getElementById("empty"+n).style.display="block";};
+
+function compress(file,cb){var r=new FileReader();r.onload=function(e){var img=new Image();img.onload=function(){var maxW=1500,maxH=1000,s=Math.min(1,maxW/img.width,maxH/img.height),w=Math.round(img.width*s),h=Math.round(img.height*s),c=document.createElement("canvas");c.width=w;c.height=h;var x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,w,h);x.drawImage(img,0,0,w,h);cb(c.toDataURL("image/jpeg",.82));};img.src=e.target.result;};r.readAsDataURL(file);}
+function bind(n){var input=document.getElementById("file"+n),zone=document.getElementById("zone"+n);input.addEventListener("change",function(){if(!input.files||!input.files[0])return;var f=input.files[0];if(!/^image\/(png|jpeg|webp)$/.test(f.type)){alert("Selecciona una imagen JPG, PNG o WEBP.");return;}compress(f,function(url){images[n]=url;document.getElementById("preview"+n).src=url;document.getElementById("previewWrap"+n).classList.add("show");document.getElementById("empty"+n).style.display="none";});});["dragenter","dragover"].forEach(function(evt){zone.addEventListener(evt,function(e){e.preventDefault();zone.classList.add("dragover");});});["dragleave","drop"].forEach(function(evt){zone.addEventListener(evt,function(e){e.preventDefault();zone.classList.remove("dragover");});});zone.addEventListener("drop",function(e){var f=e.dataTransfer.files;if(!f||!f[0])return;var dt=new DataTransfer();dt.items.add(f[0]);input.files=dt.files;input.dispatchEvent(new Event("change"));});}
+[1,2,3,4].forEach(bind);
+
+function header(doc,title,sub){doc.setFillColor(35,31,32);doc.rect(0,0,210,30,"F");doc.setTextColor(255,255,255);doc.setFont("helvetica","bold");doc.setFontSize(18);doc.text("SISE",15,13);doc.setFontSize(12);doc.text(title,45,12);doc.setFont("helvetica","normal");doc.setFontSize(9);doc.setTextColor(255,178,201);doc.text(sub,45,19);doc.setDrawColor(255,0,80);doc.setLineWidth(1.5);doc.line(15,33,195,33);}
+function footer(doc,p){doc.setDrawColor(230,220,224);doc.line(15,282,195,282);doc.setFontSize(8);doc.setTextColor(110,100,104);doc.text("Canvas LMS para docentes · Evaluación Autónoma 1 · Módulo 1",15,287);doc.text("Página "+p,195,287,{align:"right"});}
+function newPage(doc,ref,title,sub){footer(doc,ref.value);doc.addPage();ref.value++;header(doc,title,sub);return 43;}
+function ensure(doc,y,need,ref,title,sub){return y+need>277?newPage(doc,ref,title,sub):y;}
+function sec(doc,t,y,ref,title,sub){y=ensure(doc,y,16,ref,title,sub);doc.setFillColor(255,240,245);doc.roundedRect(15,y-5,180,11,2,2,"F");doc.setTextColor(255,0,80);doc.setFont("helvetica","bold");doc.setFontSize(11);doc.text(t,19,y+2);return y+12;}
+function block(doc,label,text,y,ref,title,sub){var l1=doc.splitTextToSize(label,180),l2=doc.splitTextToSize(text||"Sin respuesta",170),need=l1.length*4.5+l2.length*4.5+16;y=ensure(doc,y,need,ref,title,sub);doc.setFont("helvetica","bold");doc.setFontSize(9.5);doc.setTextColor(35,31,32);doc.text(l1,15,y);y+=l1.length*4.5+2;var h=Math.max(18,l2.length*4.5+9);doc.setFillColor(250,248,249);doc.setDrawColor(232,223,226);doc.roundedRect(15,y,180,h,2,2,"FD");doc.setFont("helvetica","normal");doc.setFontSize(9);doc.setTextColor(85,78,81);doc.text(l2,20,y+7);return y+h+7;}
+function image(doc,url,y,ref,title,sub){var p=doc.getImageProperties(url),s=Math.min(180/p.width,105/p.height),w=p.width*s,h=p.height*s;y=ensure(doc,y,h+10,ref,title,sub);doc.setDrawColor(225,216,219);doc.roundedRect(15,y,180,h+6,2,2,"S");doc.addImage(url,"JPEG",15+(180-w)/2,y+3,w,h,"","FAST");return y+h+11;}
+
+window.downloadPDF=function(){
+if(!validate(1)||!validate(2)||!validate(3)){alert("Completa todos los datos, evidencias y reflexiones.");return;}
+if(!window.jspdf||!window.jspdf.jsPDF){alert("No fue posible cargar el generador de PDF.");return;}
+var doc=new window.jspdf.jsPDF({unit:"mm",format:"a4",orientation:"portrait"}),title="PORTAFOLIO DE EVIDENCIAS",sub="Aula virtual organizada con actividad optimizada",ref={value:1},y=43;
+header(doc,title,sub);
+doc.setFillColor(255,240,245);doc.roundedRect(15,y,180,60,3,3,"F");doc.setTextColor(35,31,32);doc.setFont("helvetica","bold");doc.setFontSize(10);["Participante","Correo","Curso","Área","Fecha"].forEach(function(t,i){doc.text(t,20,y+9+i*12)});doc.setFont("helvetica","normal");[value("nombres")+" "+value("apellidos"),value("correo"),value("curso"),value("area"),new Date().toLocaleDateString("es-PE")].forEach(function(t,i){doc.text(doc.splitTextToSize(t,135),52,y+9+i*12)});y+=70;
+y=block(doc,"Contexto del curso",value("contexto"),y,ref,title,sub);
+y=sec(doc,"EVIDENCIA 1 · ORGANIZACIÓN GENERAL",y,ref,title,sub);y=image(doc,images[1],y,ref,title,sub);y=block(doc,"¿Qué se observa?",value("obs1"),y,ref,title,sub);y=block(doc,"Criterio aplicado",value("crit1"),y,ref,title,sub);
+y=sec(doc,"EVIDENCIA 2 · MÓDULOS Y RECURSOS",y,ref,title,sub);y=image(doc,images[2],y,ref,title,sub);y=block(doc,"¿Qué se observa?",value("obs2"),y,ref,title,sub);y=block(doc,"Criterio aplicado",value("crit2"),y,ref,title,sub);
+y=sec(doc,"EVIDENCIA 3 · ACTIVIDAD OPTIMIZADA",y,ref,title,sub);y=image(doc,images[3],y,ref,title,sub);y=block(doc,"Herramienta utilizada",value("tool"),y,ref,title,sub);y=block(doc,"Evidencia esperada",value("evidenceType"),y,ref,title,sub);y=block(doc,"Justificación pedagógica",value("crit3"),y,ref,title,sub);
+y=sec(doc,"EVIDENCIA 4 · ORIENTACIÓN Y COMUNICACIÓN",y,ref,title,sub);y=image(doc,images[4],y,ref,title,sub);y=block(doc,"¿Qué se observa?",value("obs4"),y,ref,title,sub);y=block(doc,"¿Cómo orienta o acompaña al estudiante?",value("crit4"),y,ref,title,sub);
+y=sec(doc,"REFLEXIÓN FINAL",y,ref,title,sub);y=block(doc,"¿Qué cambio mejoró más la organización?",value("ref1"),y,ref,title,sub);y=block(doc,"¿Qué decisión hizo más clara la actividad?",value("ref2"),y,ref,title,sub);y=block(doc,"¿Qué aspecto continuarías mejorando?",value("ref3"),y,ref,title,sub);
+footer(doc,ref.value);
+var name=(value("apellidos")+"_"+value("nombres")+"_Portafolio_Evidencias_Aula_Virtual").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-zA-Z0-9_-]+/g,"_");
+doc.save(name+".pdf");
+document.getElementById("uploadAlert").classList.add("show");document.getElementById("nextModuleWrap").classList.add("show");
+};
+})();
+</script>
+</body>
+</html>
